@@ -1,10 +1,6 @@
 {
-  "css": [
-    "webshop_ui/public/css/organic-theme.css"
-  ],
-  "js": [
-    "webshop_ui/public/js/organic-theme.js"
-  ],
+  "css": [],
+  "js": [],
   "rtl_css": [],
   "include_js": [],
   "include_css": []
