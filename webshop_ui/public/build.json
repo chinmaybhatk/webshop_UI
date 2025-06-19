@@ -1,9 +1,9 @@
 {
   "css": [
-    "webshop_ui/public/css/organic-theme.css"
+    "css/organic-theme.css"
   ],
   "js": [
-    "webshop_ui/public/js/organic-theme.js"
+    "js/organic-theme.js"
   ],
   "rtl_css": [],
   "include_js": [],
