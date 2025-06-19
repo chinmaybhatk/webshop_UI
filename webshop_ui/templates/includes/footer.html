@@ -1,0 +1,348 @@
+<!-- Custom Organic Footer Template -->
+<footer class="footer mt-5">
+    <div class="container">
+        <div class="row">
+            <!-- Company Info -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <h5>
+                    <i class="fas fa-leaf me-2"></i>
+                    {{ brand_name or 'Organic Store' }}
+                </h5>
+                <p class="mb-3">
+                    Your trusted source for fresh, organic, and locally sourced fruits and vegetables. 
+                    We believe in sustainable farming and bringing you the best nature has to offer.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="me-3"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/all-products">Products</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Categories -->
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5>Categories</h5>
+                <ul class="list-unstyled">
+                    {% for category in categories[:5] %}
+                    <li><a href="{{ category.route }}">{{ category.name }}</a></li>
+                    {% endfor %}
+                    <li><a href="/all-categories">View All</a></li>
+                </ul>
+            </div>
+
+            <!-- Customer Service -->
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5>Support</h5>
+                <ul class="list-unstyled">
+                    <li><a href="/help">Help Center</a></li>
+                    <li><a href="/shipping">Shipping Info</a></li>
+                    <li><a href="/returns">Returns</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/terms">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info & Newsletter -->
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5>Stay Connected</h5>
+                <div class="contact-info mb-3">
+                    <p class="mb-2">
+                        <i class="fas fa-phone me-2"></i>
+                        <a href="tel:+1234567890">+1 (234) 567-890</a>
+                    </p>
+                    <p class="mb-2">
+                        <i class="fas fa-envelope me-2"></i>
+                        <a href="mailto:info@organicstore.com">info@organicstore.com</a>
+                    </p>
+                    <p class="mb-3">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        123 Organic St, Green City
+                    </p>
+                </div>
+                
+                <!-- Newsletter Signup -->
+                <div class="newsletter-signup">
+                    <h6>Newsletter</h6>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email" required>
+                            <button class="btn btn-organic" type="submit">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Row -->
+        <div class="row mt-4 pt-4 border-top border-light-subtle">
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="feature-item text-center">
+                    <div class="feature-icon mb-2">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h6>Free Shipping</h6>
+                    <p class="small mb-0">On orders over $50</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="feature-item text-center">
+                    <div class="feature-icon mb-2">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h6>100% Organic</h6>
+                    <p class="small mb-0">Certified organic products</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="feature-item text-center">
+                    <div class="feature-icon mb-2">
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <h6>Easy Returns</h6>
+                    <p class="small mb-0">30-day return policy</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="feature-item text-center">
+                    <div class="feature-icon mb-2">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h6>24/7 Support</h6>
+                    <p class="small mb-0">Customer service available</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                    <p class="mb-0">
+                        &copy; {{ frappe.utils.now_datetime().year }} {{ brand_name or 'Organic Store' }}. 
+                        All rights reserved. | Made with ❤️ for nature lovers
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="payment-methods">
+                        <span class="me-2">We Accept:</span>
+                        <i class="fab fa-cc-visa me-2"></i>
+                        <i class="fab fa-cc-mastercard me-2"></i>
+                        <i class="fab fa-cc-paypal me-2"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="btn-back-to-top" id="backToTop" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<style>
+/* Footer Styles */
+.footer {
+    background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-color) 100%);
+    color: white;
+    padding: 4rem 0 2rem;
+}
+
+.footer h5 {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.footer h6 {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer a:hover {
+    color: white;
+    text-decoration: none;
+    transform: translateX(3px);
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: white;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.newsletter-form .input-group {
+    border-radius: var(--radius-small);
+    overflow: hidden;
+}
+
+.newsletter-form .form-control {
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.newsletter-form .btn {
+    border: none;
+    padding: 0.5rem 1rem;
+}
+
+.feature-item {
+    padding: 1rem;
+}
+
+.feature-icon {
+    color: var(--cream-white);
+    font-size: 2rem;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 2rem;
+    margin-top: 2rem;
+}
+
+.payment-methods i {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+}
+
+.payment-methods i:hover {
+    color: white;
+}
+
+/* Back to Top Button */
+.btn-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    box-shadow: var(--shadow-medium);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.btn-back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.btn-back-to-top:hover {
+    background: var(--dark-green);
+    transform: translateY(-3px);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 3rem 0 1.5rem;
+    }
+    
+    .footer .col-lg-4,
+    .footer .col-lg-2 {
+        margin-bottom: 2rem;
+    }
+    
+    .social-links {
+        text-align: center;
+        margin-top: 1rem;
+    }
+    
+    .payment-methods {
+        margin-top: 1rem;
+    }
+    
+    .btn-back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
+</style>
+
+<script>
+// Back to top functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+    
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Newsletter form
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            
+            // Here you would typically send the email to your newsletter service
+            console.log('Newsletter signup:', email);
+            
+            // Show success message
+            alert('Thank you for subscribing to our newsletter!');
+            this.reset();
+        });
+    }
+});
+</script>
