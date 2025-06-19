@@ -12,51 +12,34 @@ app_license = "MIT"
 # Includes in <head>
 # ------------------
 
-# include js, css files in header of desk.html
-# app_include_css = "/assets/webshop_ui/css/webshop_ui.css"
-# app_include_js = "/assets/webshop_ui/js/webshop_ui.js"
-
 # include js, css files in header of web template
 website_context = {
     "favicon": "/assets/webshop_ui/images/favicon.ico",
     "splash_image": "/assets/webshop_ui/images/splash.png"
 }
 
-# Website template overrides for webshop
-# --------------------------------------
-# Override default webshop templates with custom organic theme
-extend_bootinfo = []
-
-# Custom CSS and JS for webshop
-# ------------------------------
-app_include_css = [
+# Website Assets
+# --------------
+# These will be included in the website automatically
+web_include_css = [
     "/assets/webshop_ui/css/organic-theme.css"
 ]
 
-app_include_js = [
+web_include_js = [
     "/assets/webshop_ui/js/organic-theme.js"
-]
-
-# Website route overrides
-# -----------------------
-website_route_rules = [
-    {"from_route": "/", "to_route": "home"},
 ]
 
 # Home Pages
 # ----------
 
 # application home page (will override Website Settings)
-# home_page = "home"
+home_page = "home"
 
-# website user home page (by Role)
-# role_home_page = {
-#	"Customer": "/me",
-#	"Supplier": "/supplier"
-# }
-
-# Website user home page (by function)
-# get_website_user_home_page = "webshop_ui.utils.get_home_page"
+# Website route rules
+# -------------------
+website_route_rules = [
+    {"from_route": "/", "to_route": "home"},
+]
 
 # Generators
 # ----------
@@ -158,7 +141,6 @@ website_route_rules = [
 #
 # auto_cancel_exempted_doctypes = ["Auto Repeat"]
 
-
 # User Data Protection
 # --------------------
 
@@ -190,11 +172,3 @@ user_data_fields = [
 # auth_hooks = [
 # 	"webshop_ui.auth.validate"
 # ]
-
-# Translation
-# --------------------------------
-
-# Make property setters available across apps
-# override_doctype_dashboards = {
-# 	"Item": "webshop_ui.overrides.item_dashboard"
-# }
