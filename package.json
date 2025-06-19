@@ -1,0 +1,19 @@
+{
+  "name": "webshop_ui",
+  "version": "0.0.1",
+  "description": "Custom Frappe Webshop UI based on organic fruits and vegetables template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": [
+    "frappe",
+    "webshop",
+    "organic",
+    "ecommerce"
+  ],
+  "author": "Your Company",
+  "license": "MIT"
+}
