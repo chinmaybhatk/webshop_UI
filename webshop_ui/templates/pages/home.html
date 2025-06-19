@@ -1,0 +1,493 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ _("Fresh Organic Products Delivered") }}{% endblock %}
+
+{% block page_content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-content fade-in-up">
+                <h1 class="hero-title">
+                    Fresh & <span style="color: var(--accent-color);">Organic</span><br>
+                    Products Delivered
+                </h1>
+                <p class="hero-subtitle">
+                    Discover the finest selection of organic fruits, vegetables, and natural products. 
+                    Sourced directly from local farms, delivered fresh to your doorstep.
+                </p>
+                <div class="hero-actions">
+                    <a href="/all-products" class="btn btn-organic me-3">Shop Now</a>
+                    <a href="/about" class="btn btn-outline-organic">Learn More</a>
+                </div>
+                
+                <!-- Hero Stats -->
+                <div class="hero-stats mt-4">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="stat-item">
+                                <h3 class="stat-number">500+</h3>
+                                <p class="stat-label">Products</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="stat-item">
+                                <h3 class="stat-number">50+</h3>
+                                <p class="stat-label">Local Farms</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="stat-item">
+                                <h3 class="stat-number">10K+</h3>
+                                <p class="stat-label">Happy Customers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-image">
+                    <img src="/assets/webshop_ui/images/hero-organic.jpg" alt="Fresh Organic Products" class="img-fluid">
+                    <!-- Floating Elements -->
+                    <div class="floating-element floating-1">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="floating-element floating-2">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <div class="floating-element floating-3">
+                        <i class="fas fa-carrot"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="categories-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title">Shop by Category</h2>
+                <p class="section-subtitle">Explore our wide range of organic products</p>
+            </div>
+        </div>
+        <div class="category-grid">
+            {% for category in categories %}
+            <div class="category-card" data-category="{{ category.route }}">
+                <img src="{{ category.image or '/assets/webshop_ui/images/category-placeholder.jpg' }}" 
+                     alt="{{ category.name }}" class="category-image">
+                <div class="category-overlay">
+                    <h4>{{ category.name }}</h4>
+                    {% if category.item_count %}
+                    <p>{{ category.item_count }} Products</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products Section -->
+<section class="featured-products py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title">Featured Products</h2>
+                <p class="section-subtitle">Hand-picked fresh products just for you</p>
+            </div>
+        </div>
+        <div class="row">
+            {% for product in featured_products %}
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="product-card" data-product-id="{{ product.name }}">
+                    {% if product.discount_percentage %}
+                    <div class="product-badge">{{ product.discount_percentage }}% OFF</div>
+                    {% endif %}
+                    
+                    <div class="product-image">
+                        <img src="{{ product.website_image or '/assets/webshop_ui/images/product-placeholder.jpg' }}" 
+                             alt="{{ product.web_item_name }}" loading="lazy">
+                        <div class="product-actions">
+                            <button class="btn btn-sm btn-outline-organic quick-view" title="Quick View">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-organic wishlist-btn" title="Add to Wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-info">
+                        <h5 class="product-title">{{ product.web_item_name }}</h5>
+                        {% if product.rating %}
+                        <div class="product-rating">
+                            {% for i in range(5) %}
+                                {% if i < product.rating %}
+                                <i class="fas fa-star"></i>
+                                {% else %}
+                                <i class="far fa-star"></i>
+                                {% endif %}
+                            {% endfor %}
+                            <span class="rating-count">({{ product.rating_count or 0 }})</span>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="product-price">
+                            {% if product.discount_percentage %}
+                            <span class="original-price">{{ product.formatted_price }}</span>
+                            <span class="discounted-price">{{ product.formatted_discounted_price }}</span>
+                            {% else %}
+                            {{ product.formatted_price }}
+                            {% endif %}
+                        </div>
+                        
+                        <button class="btn btn-organic w-100 add-to-cart" data-product-id="{{ product.name }}">
+                            <i class="fas fa-shopping-cart me-2"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="/all-products" class="btn btn-outline-organic">View All Products</a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title">Why Choose Us</h2>
+                <p class="section-subtitle">We're committed to bringing you the best organic experience</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h5>100% Organic</h5>
+                    <p>All our products are certified organic, grown without harmful pesticides or chemicals.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h5>Fast Delivery</h5>
+                    <p>Fresh products delivered to your doorstep within 24 hours of harvest.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h5>Premium Quality</h5>
+                    <p>Hand-picked products that meet our high standards for freshness and quality.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h5>Community Support</h5>
+                    <p>Supporting local farmers and sustainable agriculture practices in our community.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section py-5" style="background: linear-gradient(135deg, var(--cream-white) 0%, var(--light-green) 100%);">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h3>Stay Updated with Fresh Deals</h3>
+                <p class="mb-0">Subscribe to our newsletter and be the first to know about new products, seasonal offers, and organic living tips.</p>
+            </div>
+            <div class="col-lg-6">
+                <form class="newsletter-form d-flex">
+                    <input type="email" class="form-control me-2" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-organic">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Real reviews from real customers</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The freshest vegetables I've ever bought online. The quality is amazing and delivery is always on time!"</p>
+                        <div class="testimonial-author">
+                            <h6>Sarah Johnson</h6>
+                            <span>Verified Customer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"I love the variety of organic products available. It's like having a farmer's market delivered to my door!"</p>
+                        <div class="testimonial-author">
+                            <h6>Michael Chen</h6>
+                            <span>Verified Customer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Outstanding customer service and the freshest produce. I'm a customer for life!"</p>
+                        <div class="testimonial-author">
+                            <h6>Emily Rodriguez</h6>
+                            <span>Verified Customer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block style %}
+<style>
+/* Hero Section Styles */
+.hero-section {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-image {
+    position: relative;
+}
+
+.hero-image img {
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-heavy);
+}
+
+.floating-element {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    box-shadow: var(--shadow-medium);
+    animation: float 3s ease-in-out infinite;
+}
+
+.floating-1 {
+    top: 10%;
+    right: 20%;
+    animation-delay: 0s;
+}
+
+.floating-2 {
+    bottom: 30%;
+    right: 10%;
+    animation-delay: 1s;
+}
+
+.floating-3 {
+    top: 60%;
+    left: 10%;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.hero-stats .stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* Section Styles */
+.section-title {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+/* Product Actions */
+.product-actions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover .product-actions {
+    opacity: 1;
+}
+
+.product-actions .btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 2px solid var(--primary-color);
+}
+
+/* Pricing */
+.original-price {
+    text-decoration: line-through;
+    color: var(--text-light);
+    margin-right: 0.5rem;
+}
+
+.discounted-price {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Testimonials */
+.testimonial-card {
+    background: white;
+    border-radius: var(--radius-medium);
+    padding: 2rem;
+    box-shadow: var(--shadow-light);
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.testimonial-card .stars {
+    color: var(--accent-color);
+}
+
+.testimonial-author h6 {
+    margin-bottom: 0.25rem;
+    color: var(--text-dark);
+}
+
+.testimonial-author span {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Newsletter Form */
+.newsletter-form input {
+    border: 2px solid var(--light-green);
+    padding: 12px 15px;
+}
+
+.newsletter-form input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-actions {
+        margin-bottom: 2rem;
+    }
+    
+    .hero-actions .btn {
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .floating-element {
+        display: none;
+    }
+}
+</style>
+{% endblock %}

@@ -1,0 +1,2 @@
+# Patches for webshop_ui app
+# Format: module_path.function_name

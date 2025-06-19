@@ -1,0 +1,23 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include webshop_ui *.css
+recursive-include webshop_ui *.csv
+recursive-include webshop_ui *.html
+recursive-include webshop_ui *.ico
+recursive-include webshop_ui *.js
+recursive-include webshop_ui *.json
+recursive-include webshop_ui *.md
+recursive-include webshop_ui *.png
+recursive-include webshop_ui *.py
+recursive-include webshop_ui *.svg
+recursive-include webshop_ui *.txt
+recursive-include webshop_ui *.jpg
+recursive-include webshop_ui *.jpeg
+recursive-include webshop_ui *.gif
+recursive-include webshop_ui *.woff
+recursive-include webshop_ui *.woff2
+recursive-exclude webshop_ui *.pyc
