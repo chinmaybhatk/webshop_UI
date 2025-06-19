@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "webshop-ui"
+version = "0.0.1"
+description = "Custom Frappe Webshop UI based on organic fruits and vegetables template"
+authors = [
+    {name = "Your Company", email = "your@email.com"}
+]
+license = {text = "MIT"}
+requires-python = ">=3.7"
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/chinmaybhatk/webshop_UI"
+Repository = "https://github.com/chinmaybhatk/webshop_UI"
+
+[tool.setuptools]
+packages = ["webshop_ui"]
+
+[tool.setuptools.package-data]
+webshop_ui = ["**/*"]
