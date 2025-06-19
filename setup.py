@@ -11,7 +11,7 @@ except FileNotFoundError:
     long_description = "Custom Frappe Webshop UI based on organic fruits and vegetables template"
 
 setup(
-    name="webshop-ui",
+    name="webshop_ui",
     version="0.0.1",
     description="Custom Frappe Webshop UI based on organic fruits and vegetables template",
     long_description=long_description,
