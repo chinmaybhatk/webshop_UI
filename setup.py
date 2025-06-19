@@ -3,11 +3,15 @@ from setuptools import setup, find_packages
 with open("requirements.txt") as f:
     requirements = f.read().strip().split("\n")
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+# Handle README.md file gracefully
+try:
+    with open("README.md", "r", encoding="utf-8") as fh:
+        long_description = fh.read()
+except FileNotFoundError:
+    long_description = "Custom Frappe Webshop UI based on organic fruits and vegetables template"
 
 setup(
-    name="webshop_ui",
+    name="webshop-ui",
     version="0.0.1",
     description="Custom Frappe Webshop UI based on organic fruits and vegetables template",
     long_description=long_description,
