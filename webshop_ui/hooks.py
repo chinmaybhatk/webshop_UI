@@ -9,6 +9,10 @@ app_color = "green"
 app_email = "your@email.com"
 app_license = "MIT"
 
+# Disable build process for this app since we use static assets
+build_include_js = []
+build_include_css = []
+
 # Includes in <head>
 # ------------------
 
